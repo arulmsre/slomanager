@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slo-app
+  template:
+    metadata:
+      labels:
+        app: slo-app
+    spec:
+      containers:
+        - name: slo-app
+          image: <ACR_LOGIN_SERVER>/slo-app:<TAG> # replace during deployment
+          ports:
+            - containerPort: 80
